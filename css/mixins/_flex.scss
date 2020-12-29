@@ -1,0 +1,11 @@
+@mixin flex-center($axis: both) {
+  display: flex;
+
+  @if $axis == horizontal or $axis == both {
+    justify-content: center;
+  }
+
+  @if $axis == vertical or $axis == both {
+    align-items: center;
+  }
+}
