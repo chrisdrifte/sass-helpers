@@ -1,5 +1,5 @@
 {
-  "name": "sass-helpers",
+  "name": "drifte-sass-helpers",
   "version": "0.0.1",
   "description": "A library of mixins and plugins to help make sass dev a cinch",
   "author": "Chris Drifte <chrisdrifte@gmail.com>",
