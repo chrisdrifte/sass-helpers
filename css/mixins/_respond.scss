@@ -1,0 +1,83 @@
+/**
+ * Respond
+ *
+ * Manage responsive layouts with clearer syntax.
+ */
+
+@import "../defaults/breakpoints";
+@import "./map";
+
+/**
+ * Respond to mobile
+ */
+@mixin respond-mobile {
+  @media screen and (max-width: #{map-get($breakpoints, "mobile")}) {
+    @content;
+  }
+}
+
+/**
+ * Respond to non-mobile
+ */
+@mixin respond-not-mobile {
+  @media screen and (min-width: #{map-get($breakpoints, "mobile") + 1}) {
+    @content;
+  }
+}
+
+/**
+ * Respond to tablet
+ */
+@mixin respond-tablet {
+  @media screen and (min-width: #{map-get($breakpoints, "mobile") + 1}) and (max-width: #{map-get($breakpoints, "tablet")}) {
+    @content;
+  }
+}
+
+/**
+ * Respond to laptop
+ */
+@mixin respond-laptop {
+  @media screen and (min-width: #{map-get($breakpoints, "tablet") + 1}) and (max-width: #{map-get($breakpoints, "laptop")}) {
+    @content;
+  }
+}
+
+/**
+ * Respond to desktop
+ */
+@mixin respond-desktop {
+  @media screen and (min-width: #{map-get($breakpoints, "laptop") + 1}) {
+    @content;
+  }
+}
+
+/**
+ * Respond to width
+ */
+@mixin respond-width($min, $max: null) {
+  @if ($max != null) {
+    @media screen and (min-width: #{$min}) and (max-width: #{$max}) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: #{$min}) {
+      @content;
+    }
+  }
+}
+
+/**
+ * Respond to height
+ */
+@mixin respond-height($min, $max: null) {
+  @if ($max != null) {
+    @media screen and (min-height: #{$min}) and (max-height: #{$max}) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-height: #{$min}) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+/**
+ * Font
+ *
+ * Helper functions for handling fonts.
+ */
+
+@import "./snap";
+
+/**
+ * family()
+ * Set font-family property.
+ */
+@mixin font-family($family) {
+  font-family: $family;
+}
+
+/**
+ * size()
+ * Set font-size property.
+ */
+@mixin font-size($size) {
+  $font-size: px($size);
+
+  // allow use of font size in other props
+  font-size: $font-size;
+  --font-size: #{$font-size};
+}
+
+/**
+ * weight()
+ * Set font-weight property.
+ */
+@mixin font-weight($weight) {
+  font-weight: $weight;
+}
+
+/**
+ * height()
+ * Set line-height property.
+ */
+@mixin font-line-height($height) {
+  $line-height: lh($height);
+
+  // allow use of line height in other props
+  line-height: $line-height;
+  --line-height: #{$line-height};
+}
+
+/**
+ * spacing()
+ * Set letter-spacing property.
+ */
+@mixin font-spacing($spacing) {
+  letter-spacing: px($spacing);
+}
+
+/**
+ * format()
+ * Set text-transform property.
+ */
+@mixin font-format($format) {
+  text-transform: $format;
+}

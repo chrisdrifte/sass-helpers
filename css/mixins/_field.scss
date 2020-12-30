@@ -1,0 +1,151 @@
+/**
+ * Fields
+ *
+ * Shorthand mixins for styling awkward field properties like placeholder and autofill, 
+ * as well as simple application of styles to html elements that are semantically similar.
+ */
+
+/**
+ * define()
+ *
+ * Quickly define field styles that apply to all reasonable field elements.
+ *
+ * Parameters:
+ * $type                any valid value of <input type=""> 
+ *
+ * Returns:     (css)
+ */
+@mixin field-define($type) {
+  // Plain text inputs
+  @if $type == text {
+    input[type="text"] {
+      @content;
+    }
+  }
+
+  // Inputs that fallback to text fields
+  // <input type="email">, <input name="email"> etc.
+  $text_inputs: (email, number, password, search, tel, url);
+  @if index($text_inputs, $type) {
+    input[type="#{$type}"],
+    input[type="text"][name="#{$type}"] {
+      @content;
+    }
+  }
+
+  // Inputs that don't fallback to text fields
+  // <input type="color"> etc.
+  $basic_inputs: (
+    color,
+    date,
+    datetime-local,
+    file,
+    month,
+    range,
+    time,
+    week,
+    checkbox,
+    radio
+  );
+  @if index($basic_inputs, $type) {
+    input[type="#{$type}"] {
+      @content;
+    }
+  }
+
+  // Inputs that have their own tag
+  // <select>, <textarea>
+  $semantic_inputs: (select, textarea);
+  @if index($basic_inputs, $type) {
+    #{$type} {
+      @content;
+    }
+  }
+
+  // Buttons
+  // <input type="button">, <input type="submit">, <input type="reset">,
+  // <button>, <a href="" role="button">
+  @if $type == button {
+    input[type="button"],
+    input[type="submit"],
+    input[type="reset"],
+    button,
+    a[role="button"] {
+      @content;
+    }
+  }
+}
+
+/**
+ * autofill()
+ *
+ * Define autofill styles for form elements.
+ *
+ * Parameters:
+ * $color                font color 
+ * $background           background color
+ *
+ * Returns:     (css)
+ */
+@mixin field-autofill($color, $background) {
+  &:-webkit-autofill {
+    -webkit-text-fill-color: $color;
+    -webkit-box-shadow: 0 0 0px 1000px $background inset;
+    box-shadow: 0 0 0px 1000px $background inset;
+  }
+  &:-moz-autofill {
+    -moz-text-fill-color: $color;
+    -moz-box-shadow: 0 0 0px 1000px $background inset;
+    box-shadow: 0 0 0px 1000px $background inset;
+  }
+  &:-o-autofill {
+    -o-text-fill-color: $color;
+    -o-box-shadow: 0 0 0px 1000px $background inset;
+    box-shadow: 0 0 0px 1000px $background inset;
+  }
+  &:-khtml-autofill {
+    -khtml-text-fill-color: $color;
+    -khtml-box-shadow: 0 0 0px 1000px $background inset;
+    box-shadow: 0 0 0px 1000px $background inset;
+  }
+}
+
+/**
+ * placeholder()
+ *
+ * Define placeholder styles for form elements.
+ *
+ * Parameters:
+ * $color                font color 
+ *
+ * Returns:     (css)
+ */
+@mixin field-placeholder($color) {
+  &::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    @include color($color);
+  }
+  &:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    @include color($color);
+    opacity: 1;
+  }
+  &::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    @include color($color);
+    opacity: 1;
+  }
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    @include color($color);
+  }
+  &::-ms-input-placeholder {
+    /* Microsoft Edge */
+    @include color($color);
+  }
+
+  &::placeholder {
+    /* Most modern browsers support this now. */
+    @include color($color);
+  }
+}

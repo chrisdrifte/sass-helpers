@@ -1,0 +1,11 @@
+// full sizes
+$vw100: var(--fvw) !default;
+$vh100: var(--fvh) !default;
+
+// half sizes
+$vw50: calc(#{$vw100} / 2) !default;
+$vh50: calc(#{$vh100} / 2) !default;
+
+// quarter sizes
+$vw25: calc(#{$vw100} / 4) !default;
+$vh25: calc(#{$vh100} / 4) !default;

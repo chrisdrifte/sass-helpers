@@ -3,5 +3,8 @@
   "version": "0.0.2",
   "description": "A library of mixins and plugins to help make sass dev a cinch",
   "author": "Chris Drifte <chrisdrifte@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "scripts": {
+    "quick-pub": "git add . && git commit -m \"Updates\" && npm version patch && npm publish && git push"
+  }
 }

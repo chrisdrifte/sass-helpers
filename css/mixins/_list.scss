@@ -1,0 +1,30 @@
+/**
+ * List
+ *
+ * A magic wand for lists.
+ */
+
+/**
+ * counter-zero-pad()
+ *
+ * Use stylable 01, 02, 03 ... instead of 1, 2, 3 for lists
+ */
+@mixin list-counter-zero-pad {
+  & {
+    // reset the counter
+    list-style: none;
+    counter-reset: custom-counter;
+
+    li {
+      // increment the counter
+      counter-increment: custom-counter;
+
+      // style the counter
+      &::before {
+        content: "0" counter(custom-counter);
+        display: inline-block;
+        @content;
+      }
+    }
+  }
+}

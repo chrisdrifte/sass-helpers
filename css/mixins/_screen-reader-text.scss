@@ -1,0 +1,26 @@
+/**
+ * screen-reader-text()
+ *
+ * Hide text from visual readers, but not from screen readers.
+ */
+@mixin screen-reader-text($enabled: true) {
+  @if $enabled {
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+  } @else {
+    clip: unset;
+    clip-path: unset;
+    height: unset;
+    width: unset;
+    margin: unset;
+    overflow: unset;
+    padding: unset;
+    position: unset;
+  }
+}

@@ -1,0 +1,12 @@
+// device minimum edges
+$mobile_min_edge: px(16) !default;
+$tablet_min_edge: px(16) !default;
+$laptop_min_edge: px(32) !default;
+$desktop_min_edge: px(32) !default;
+
+// device max widths
+$global_min_width: px(325) !default;
+$mobile_max_width: px(400) !default;
+$tablet_max_width: px(1024) !default;
+$laptop_max_width: px(1440) !default;
+$desktop_max_Width: px(1920) !default;

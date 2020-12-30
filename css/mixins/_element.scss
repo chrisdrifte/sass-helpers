@@ -1,0 +1,44 @@
+/**
+ * Shorthand for common element display/position values
+ */
+
+@mixin element-block {
+  display: block;
+}
+
+@mixin element-inline {
+  display: inline;
+}
+
+@mixin element-inline-block {
+  display: inline-block;
+}
+
+@mixin element-hidden {
+  display: none !important;
+}
+
+@mixin element-block-offset-parent {
+  display: block;
+  position: relative; // use as offset parent
+}
+
+@mixin element-inline-offset-parent {
+  display: inline;
+  position: relative; // use as offset parent
+}
+
+@mixin element-inline-block-offset-parent {
+  display: inline-block;
+  position: relative; // use as offset parent
+}
+
+@mixin element-fixed-background {
+  position: fixed;
+  z-index: 0;
+}
+
+@mixin element-fixed-foreground {
+  position: fixed;
+  z-index: 1000;
+}

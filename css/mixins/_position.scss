@@ -1,0 +1,196 @@
+/**
+ * Position
+ *
+ * A magic wand for positioned layouts.
+ */
+
+/**
+ * position()
+ *
+ * Set element position
+ */
+@mixin position(
+  $position,
+  $x: unset,
+  $y: unset,
+  $z: unset,
+  $width: null,
+  $height: null,
+  $vAxis: top,
+  $hAxis: left,
+  $xOffset: null,
+  $yOffset: null
+) {
+  position: $position;
+
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+
+  @if $x == center {
+    $x: 50%;
+    @if $hAxis == left {
+      $xOffset: -50%;
+    } @else if $hAxis == right {
+      $xOffset: 50%;
+    }
+  }
+
+  @if $y == center {
+    $y: 50%;
+    @if $vAxis == top {
+      $yOffset: -50%;
+    } @else if $vAxis == bottom {
+      $yOffset: 50%;
+    }
+  }
+
+  #{$hAxis}: $x;
+  #{$vAxis}: $y;
+  z-index: $z;
+
+  @if $width != null {
+    width: $width;
+  }
+  @if $height != null {
+    height: $height;
+  }
+
+  @if $xOffset and $yOffset {
+    transform: translate($xOffset, $yOffset);
+  } @else if $xOffset {
+    transform: translateX($xOffset);
+  } @else if $yOffset {
+    transform: translateY($yOffset);
+  }
+}
+
+/**
+ * position()
+ *
+ * Static elements helper
+ */
+@mixin position-static {
+  @include position(static);
+}
+
+/**
+ * relative()
+ *
+ * Relative elements helper
+ */
+@mixin position-relative(
+  $x: 0,
+  $y: 0,
+  $z: 0,
+  $width: null,
+  $height: null,
+  $vAxis: top,
+  $hAxis: left,
+  $xOffset: null,
+  $yOffset: null
+) {
+  @include position(
+    relative,
+    $x,
+    $y,
+    $z,
+    $width,
+    $height,
+    $vAxis,
+    $hAxis,
+    $xOffset,
+    $yOffset
+  );
+}
+
+/**
+ * fixed()
+ *
+ * Fixed elements helper
+ */
+@mixin position-fixed(
+  $x: 0,
+  $y: 0,
+  $z: 9999,
+  $width: 100%,
+  $height: 100%,
+  $vAxis: top,
+  $hAxis: left,
+  $xOffset: null,
+  $yOffset: null
+) {
+  @include position(
+    fixed,
+    $x,
+    $y,
+    $z,
+    $width,
+    $height,
+    $vAxis,
+    $hAxis,
+    $xOffset,
+    $yOffset
+  );
+}
+
+/**
+ * sticky()
+ *
+ * Sticky elements helper
+ */
+@mixin position-sticky(
+  $x: 0,
+  $y: 0,
+  $z: 9999,
+  $width: null,
+  $height: null,
+  $vAxis: top,
+  $hAxis: left,
+  $xOffset: null,
+  $yOffset: null
+) {
+  @include position(
+    sticky,
+    $x,
+    $y,
+    $z,
+    $width,
+    $height,
+    $vAxis,
+    $hAxis,
+    $xOffset,
+    $yOffset
+  );
+}
+
+/**
+ * absolute()
+ *
+ * Absolute elements helper
+ */
+@mixin position-absolute(
+  $x: 0,
+  $y: 0,
+  $z: 0,
+  $width: null,
+  $height: null,
+  $vAxis: top,
+  $hAxis: left,
+  $xOffset: null,
+  $yOffset: null
+) {
+  @include position(
+    absolute,
+    $x,
+    $y,
+    $z,
+    $width,
+    $height,
+    $vAxis,
+    $hAxis,
+    $xOffset,
+    $yOffset
+  );
+}

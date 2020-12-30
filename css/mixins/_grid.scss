@@ -1,0 +1,13 @@
+/**
+ * Gridbox
+ *
+ * A magic wand for grid layouts.
+ */
+
+@mixin grid-name-cells($names_by_selector) {
+  @each $selector, $name in $names_by_selector {
+    #{unquote($selector)} {
+      grid-area: unquote($name);
+    }
+  }
+}

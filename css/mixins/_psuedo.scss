@@ -1,0 +1,36 @@
+/**
+ * Psuedo
+ *
+ * Helper mixins for building html psuedo-elements.
+ */
+
+/**
+ * element()
+ * Define psuedo elements easily.
+ */
+@mixin pseudo-element($content: " ", $display: block) {
+  content: $content;
+  display: $display;
+}
+
+/**
+ * before() 
+ * shorthand for ::before {} psuedoelement.
+ */
+@mixin pseudo-before($content: " ", $display: block) {
+  &::before {
+    @include element($content, $display);
+    @content;
+  }
+}
+
+/**
+ * after()
+ * shorthand for ::after {} psuedoelement.
+ */
+@mixin pseudo-after($content: " ", $display: block) {
+  &::after {
+    @include element($content, $display);
+    @content;
+  }
+}

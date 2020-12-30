@@ -1,0 +1,41 @@
+/**
+ * Size
+ *
+ * Shorthand functions for setting responsive dimensions.
+ */
+
+/**
+ * width()
+ *
+ * Shortcut for responsive widths.
+ *
+ * Parameters:
+ * $min     (number)    min-width
+ * $width   (number)    width
+ * $max     (number)    max-width
+ *
+ * Returns: (css)       responsive width
+ */
+@mixin size-width($min: 0, $width: auto, $max: 100%) {
+  min-width: $min;
+  width: $width;
+  max-width: $max;
+}
+
+/**
+ * height()
+ *
+ * Shortcut for responsive heights.
+ *
+ * Parameters:
+ * $min     (number)    min-height
+ * $height   (number)    height
+ * $max     (number)    max-height
+ *
+ * Returns: (css)       responsive height
+ */
+@mixin size-height($min: 0, $height: auto, $max: 100%) {
+  min-height: $min;
+  height: $height;
+  max-height: $max;
+}

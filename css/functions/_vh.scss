@@ -1,0 +1,3 @@
+@function vh($amount) {
+  @return calc(var(--vh, 1vh) * #{$amount});
+}

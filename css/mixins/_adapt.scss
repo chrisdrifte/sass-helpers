@@ -1,0 +1,78 @@
+/**
+ * Adapt
+ *
+ * Force element colors with filters. 
+ */
+
+@import "../defaults/colors";
+
+/**
+ * force-white()
+ *
+ * Force color images and text to white.
+ *
+ * Returns:     (css)
+ */
+@mixin adapt-force-white {
+  &,
+  *:not(img):not(svg) {
+    @include color($white);
+    -webkit-text-fill-color: $white; // fix safari
+  }
+
+  img[src$=".png"],
+  img[src$=".svg"],
+  svg {
+    filter: grayscale(100%) brightness(0%) invert(100%);
+  }
+}
+
+/**
+ * force-black()
+ *
+ * Force color images and text to black.
+ *
+ * Returns:     (css)
+ */
+@mixin adapt-force-black {
+  &,
+  *:not(img):not(svg) {
+    @include color($black);
+    -webkit-text-fill-color: $white; // fix safari
+  }
+
+  img[src$=".png"],
+  img[src$=".svg"],
+  svg {
+    filter: grayscale(100%) brightness(0%) invert(0%);
+  }
+}
+
+/**
+ * clear()
+ *
+ * Remove forced colors.
+ *
+ * Returns:     (css)
+ */
+@mixin adapt-clear {
+  &,
+  *:not(img):not(svg) {
+    @include color(inherit);
+  }
+
+  img[src$=".png"],
+  img[src$=".svg"],
+  svg {
+    filter: inherit;
+  }
+}
+
+/**
+ * Set font color
+ */
+@mixin adapt-color($color) {
+  color: $color;
+  -webkit-text-fill-color: $color; //fix weird safari bug
+  --color: $color;
+}
