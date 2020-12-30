@@ -5,6 +5,12 @@
   "author": "Chris Drifte <chrisdrifte@gmail.com>",
   "license": "ISC",
   "scripts": {
+    "test": "jest",
     "quick-pub": "git add . && git commit -m \"Updates\" && npm version patch && npm publish && git push"
+  },
+  "devDependencies": {
+    "glob": "^7.1.6",
+    "jest": "^26.6.3",
+    "node-sass": "^5.0.0"
   }
 }
