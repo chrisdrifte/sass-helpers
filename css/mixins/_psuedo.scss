@@ -8,7 +8,7 @@
  * element()
  * Define psuedo elements easily.
  */
-@mixin pseudo-element($content: " ", $display: block) {
+@mixin pseudo-element($content: ' ', $display: block) {
   content: $content;
   display: $display;
 }
@@ -17,9 +17,9 @@
  * before() 
  * shorthand for ::before {} psuedoelement.
  */
-@mixin pseudo-before($content: " ", $display: block) {
+@mixin pseudo-before($content: ' ', $display: block) {
   &::before {
-    @include element($content, $display);
+    @include pseudo-element($content, $display);
     @content;
   }
 }
@@ -28,9 +28,9 @@
  * after()
  * shorthand for ::after {} psuedoelement.
  */
-@mixin pseudo-after($content: " ", $display: block) {
+@mixin pseudo-after($content: ' ', $display: block) {
   &::after {
-    @include element($content, $display);
+    @include pseudo-element($content, $display);
     @content;
   }
 }
